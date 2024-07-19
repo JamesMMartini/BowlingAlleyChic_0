@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 0</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 0</h1>
+			<h3>INTERACTION</h3>
+			<a href="page6.html">
+				<button class="header-btn">
+					Page 6: Re-Quantization
+				</button>
+			</a>
+            <a href="page8.html">
+				<button class="header-btn">
+					Page 8: Back Cover
+				</button>
+			</a>
+		</div>
+		<div id="text" class="row-left">
+			<div class="sub-row-left">
+				<h2>I MAKE GAMES, ACTUALLY</h2>
+
+				<p>Click and drag the cube around!</p>
+                <p>I don't plan on using Three.js interaction much. The whole point of this is to use something other 
+                    than Unity and doing interaction in this feels a whole lot like Unity but worse in every way.
+                </p>
+                <p>
+                    If I <i>wanted</i> to code interaction I would use a more object-oriented system that actually <i>works</i> 
+                    for interaction like, I don't know, Unity.
+                </p>
+                <p>
+                    This page is more just to prove that I can do it than anything else. I wanted to figure out how mapping 
+                    events on the HTML page to Three.js scripts works, but this kind of sucks. Namely, the click-and-drag code 
+                    seems to have removed your ability to highlight the text which drives me insane.
+                </p>
+                <p>
+
+                </p>
+			</div>
+		</div>
+	</div>
+	<script type="module" src="page7.js"></script>
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 0</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 0</h1>
+			<h3>THREE.JS</h3>
+			<a href="page3.html">
+				<button class="header-btn">
+					Page 3: HTML Layout
+				</button>
+			</a>
+            <a href="page5.html">
+				<button class="header-btn">
+					Page 5: Quantization
+				</button>
+			</a>
+		</div>
+		<div class="row-left">
+			<div class="sub-row-left">
+				<h2>3D WEB GRAPHICS</h2>
+
+				<p>I wanted to do more graphics-first projects and decided that Unity was too bloated. 
+                    I wanted more direct control over everything so I researched other 3D web graphics tools.</p>
+                <p>Turns out Unity is the recommended one.</p>
+                <p>Undeterred I decided to use WebGL directly.</p>
+                <p>Turns out that's actually way more complicated than I want to deal with.</p>
+                <p>Anyways, looks like Three.js is a pretty popular tool.</p>
+                <p>This page was just to get the hang of creating a scene with a background, geometry, and camera.
+                    There's also a basic custom shader to display a texture on the cube to learn to how to create ShaderMaterials.</p>
+			</div>
+		</div>
+	</div>
+    <script type="module" src="page4.js"></script>
+    <script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>
