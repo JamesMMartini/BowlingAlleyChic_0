@@ -32,7 +32,7 @@ scene.background = textureLoader.load("Textures/portland.jpg");
 
 const shaderMaterial = new THREE.ShaderMaterial({
     uniforms: {
-        texture1: { type: "t", value: textureLoader.load("Textures/battle ui.png") }
+        texture1: { type: "t", value: textureLoader.load("Textures/battle ui.jpg") }
     },
     vertexShader: document.getElementById("vertexShader").textContent,
     fragmentShader: document.getElementById("fragmentShader").textContent

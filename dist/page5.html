@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 0</title>
+  <script type="module" crossorigin src="./assets/RenderPass-DKVN8-Vw.js"></script>
+  <script type="module" crossorigin src="./assets/ToneMapShader-BEcfEgQS.js"></script>
+  <script type="module" crossorigin src="./assets/page5-CThlCFv6.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/page5style-DtzQ0hWt.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 0</h1>
+			<h3>QUANTIZATION</h3>
+			<a href="page4.html">
+				<button class="header-btn">
+					Page 4: Three.js
+				</button>
+			</a>
+            <a href="page6.html">
+				<button class="header-btn">
+					Page 6: Re-Quantization
+				</button>
+			</a>
+		</div>
+		<div class="row-left">
+			<div class="sub-row-left">
+				<h2>BAD SHADERS</h2>
+
+				<p>Quantization is a process of reducing a large set of values to a smaller set of values 
+                    by matching each value in the large set to the closest value in the small set.</p>
+                <p>In image processing, this is typically used to reduce an image down to a set color palette.</p>
+                <p>I was too lazy to define a set color palette so instead I'm just rounding each rgba value of each pixel to 
+                    0, 0.25, 0.5, 0.75, or 1.
+                </p>
+                <p>This follows my general plan to ignore the best practices and techniques in favor of just trying whatever 
+                    I feel like doing and analyzing the results.
+                </p>
+			</div>
+		</div>
+        <div class="row-right">
+            <div class="sub-row-right">
+                <h2>ANALYSIS</h2>
+
+                <p>I actually think this pretty decent. It's less precise and gives me less control than 
+                    normal quantization but as a cheap way of reducing the colors of an image this works pretty well.
+                </p>
+                <p>
+                    You can definitely some unsightly yellow and red tones on what should be a primarily brown/green/gray 
+                    image but all-in-all it did exactly what you would expect, which is pretty good.
+                </p>
+            </div>
+        </div>
+	</div>
+    <script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>

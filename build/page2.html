@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bowling Alley Chic: Issue 0</title>
+  <script type="module" crossorigin src="./assets/page2-BJcWSg8S.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/RenderPass-DKVN8-Vw.js">
+  <link rel="modulepreload" crossorigin href="./assets/ToneMapShader-BEcfEgQS.js">
+  <link rel="stylesheet" crossorigin href="./assets/style-IDdN95xg.css">
+</head>
+<body>
+	<div class="main-body">
+		<div class="header">
+			<h1>BOWLING ALLEY CHIC: ISSUE 0</h1>
+			<h3>MANIFESTO</h3>
+			<a href="index.html">
+				<button class="header-btn">
+					Page 1: Re-learning HTML
+				</button>
+			</a>
+            <a href="page3.html">
+				<button class="header-btn">
+					Page 3: HTML Layout
+				</button>
+			</a>
+		</div>
+		<div class="row-left">
+			<div class="sub-row-left">
+				<h2>THE GUTTER WHERE GRAPHICS COME TO DIE</h2>
+
+				<p>Bowling Alley Chic says NO to more pixels and polygons.</p>
+				<p>Bowling Alley Chic says NO to photorealism.</p>
+				<p>Bowling Alley Chic says YES to VIBES-BASED GRAPHICS PROGRAMMING.</p>
+			</div>
+		</div>
+		<div class="row-right">
+			<div class="sub-row-right">
+				<h2>THE BUMPERS ARE OFF</h2>
+				<p>I will use three.js and HTML to make ALL the graphics you see.</p>
+				<p>No plug-ins and no packs. This about me learning more about graphics programming through pure experimentation.</p>
+			</div>
+		</div>
+	</div>
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+
+		void main() {
+			vUv = uv;
+
+			gl_Position =   projectionMatrix * 
+							modelViewMatrix * 
+							vec4(position,1.0);
+		}
+	</script>
+	<script id="fragmentShader" type="x-shader/x-fragment">
+		uniform sampler2D texture1;
+
+		varying vec2 vUv;
+
+		void main() {
+			gl_FragColor = texture(texture1, vUv);
+		}
+	</script>
+</body>
+</html>
